@@ -1,0 +1,7 @@
+TAC Examples
+Copyright 2013 Taranis Elsu
+
+This product includes software developed by
+Taranis Elsu (https://github.com/taraniselsu),
+with contributions by:
+   evilC (https://github.com/evilC).
