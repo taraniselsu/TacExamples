@@ -24,29 +24,43 @@ using UnityEngine;
 namespace Tac
 {
     /*
-     * This project is meant to be the "Hello World" example showing how to make a part-less plugin.
+     * This project is meant to be a "Hello World" example showing how to make a part-less plugin.
      * 
-     * The main class for your plug-in must implement MonoBehavior.
+     * The main class for your plug-in should implement MonoBehavior, which is a Unity class.
      * http://docs.unity3d.com/Documentation/ScriptReference/MonoBehaviour.html
      * 
-     * It is suggested that you read http://www.richardfine.co.uk/2012/10/unity3d-monobehaviour-lifecycle/
-     * along with this class.
+     * KSPAddon is an "attribute" that lets KSP know that this class is a plug-in. KSP will create
+     * an instance of the class whenever the game loads the specified scene. The second parameter
+     * tells KSP whether to create an instance once, or every time it loads the scene.
      * 
-     * KSPAddon is an "attribute" that lets KSP know that this class is a plug-in. When KSP sees
-     * the attribute, KSP will create an instance whenever the game loads the specified scene. The
-     * second parameter tells KSP whether to create an instance once, or every time it loads the
-     * scene. Note that there is a bug in 0.21.1 until ? where only one class can be 
-     * 
-     * Be careful using true with KSPAddon until this bug gets fixed:
+     * Do not use true for the second parameter until this bug gets fixed:
      * http://forum.kerbalspaceprogram.com/threads/45107-KSPAddon-bug-causes-mod-incompatibilities
+     * That link has a workaround, but unless your needs dictate otherwise, prefer to use false.
+     * 
+     * The lifecycle for KSP comes from Unity with a few differences:
+     *    
+     *    Constructor -> Awake() -> Start() -> Update/FixedUpdate() [repeats] -> OnDestroy()
+     * 
+     * When the specified game scene loads, first KSP will construct your MonoBehaviour class and
+     * call Awake(). When it finishes doing that for all the mods, then it calls Start(). After
+     * that, it will call Update() every frame and FixedUpdate() every physics time step. Just
+     * before exiting the scene, the game will call OnDestroy() which gives you the opportunity to
+     * save any settings.
+     * 
+     * Unity uses Serialization a lot, so use the Awake() method to initialize your fields rather
+     * than the constructor. And you can use OnDestroy() to do some of the things you would do in
+     * a destructor.
+     * 
+     * Also see http://www.richardfine.co.uk/2012/10/unity3d-monobehaviour-lifecycle/ for more
+     * information about the Unity lifecycle.
      */
     [KSPAddon(KSPAddon.Startup.Flight, false)]
     public class SimplePartlessPlugin : MonoBehaviour
     {
         /*
-         * The constructor. Called when the scene specified in the KSPAddon attribute is loaded. Do not
-         * rely on the constructor much though because Unity doesn't play well with them. Use the Awake() method
-         * to initialize your fields instead.
+         * Caution: as it says here: http://docs.unity3d.com/Documentation/ScriptReference/MonoBehaviour.Awake.html,
+         * use the Awake() method instead of the constructor for initializing data because Unity uses
+         * Serialization a lot.
          */
         public SimplePartlessPlugin()
         {
@@ -55,9 +69,6 @@ namespace Tac
 
         /*
          * Called after the scene is loaded.
-         * Only if the GameObject is active?
-         * 
-         * "Called when the script instance is being loaded." 
          */
         void Awake()
         {
@@ -65,7 +76,7 @@ namespace Tac
         }
 
         /*
-         * Called next
+         * Called next.
          */
         void Start()
         {
@@ -73,6 +84,7 @@ namespace Tac
         }
 
         /*
+         * Called every frame
          */
         void Update()
         {
@@ -80,6 +92,7 @@ namespace Tac
         }
 
         /*
+         * Called at a fixed time interval determined by the physics time step.
          */
         void FixedUpdate()
         {
@@ -87,27 +100,7 @@ namespace Tac
         }
 
         /*
-         */
-        void LateUpdate()
-        {
-            Debug.Log("TAC Examples-SimplePartlessPlugin [" + this.GetInstanceID().ToString("X") + "][" + Time.time.ToString("0.0000") + "]: LateUpdate");
-        }
-
-        /*
-         */
-        void OnEnable()
-        {
-            Debug.Log("TAC Examples-SimplePartlessPlugin [" + this.GetInstanceID().ToString("X") + "][" + Time.time.ToString("0.0000") + "]: OnEnable");
-        }
-
-        /*
-         */
-        void OnDisable()
-        {
-            Debug.Log("TAC Examples-SimplePartlessPlugin [" + this.GetInstanceID().ToString("X") + "][" + Time.time.ToString("0.0000") + "]: OnDisable");
-        }
-
-        /*
+         * Called when the game is leaving the scene (or exiting). Perform any clean up work here.
          */
         void OnDestroy()
         {
