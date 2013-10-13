@@ -1,4 +1,4 @@
-set DIR=%1..\GameData\TacExamples\SimplePartModule\
+set DIR=%1..\GameData\ThunderAerospace\Examples\SimplePartModule\
 
 if not exist %DIR% mkdir %DIR%
 copy SimplePartModule.dll %DIR%

@@ -1,4 +1,4 @@
-﻿/**
+﻿/*
  * SimplePartModule.cs
  * 
  * Part of the KSP modding examples from Thunder Aerospace Corporation.
@@ -23,6 +23,8 @@ using UnityEngine;
 
 namespace Tac
 {
+    /*
+     */
     public class SimplePartModule : PartModule
     {
         public SimplePartModule()

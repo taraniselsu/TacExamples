@@ -1,7 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Express 2012 for Windows Desktop
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimplePartModule", "SimplePartModule\SimplePartModule.csproj", "{F69E903B-BA09-42AD-87E9-E8D0BF1BF1A9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01-SimplePartlessPlugin", "01-SimplePartlessPlugin\Source\01-SimplePartlessPlugin.csproj", "{1073550B-E6BD-4176-A303-A10D28CE41FF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02-SimplePartModule", "02-SimplePartModule\Source\02-SimplePartModule.csproj", "{F69E903B-BA09-42AD-87E9-E8D0BF1BF1A9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,6 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1073550B-E6BD-4176-A303-A10D28CE41FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1073550B-E6BD-4176-A303-A10D28CE41FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1073550B-E6BD-4176-A303-A10D28CE41FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1073550B-E6BD-4176-A303-A10D28CE41FF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F69E903B-BA09-42AD-87E9-E8D0BF1BF1A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F69E903B-BA09-42AD-87E9-E8D0BF1BF1A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F69E903B-BA09-42AD-87E9-E8D0BF1BF1A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
