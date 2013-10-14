@@ -35,7 +35,7 @@ namespace Tac
      * 
      * Do not use true for the second parameter until this bug gets fixed:
      * http://forum.kerbalspaceprogram.com/threads/45107-KSPAddon-bug-causes-mod-incompatibilities
-     * That link has a workaround, but unless your needs dictate otherwise, prefer to use false.
+     * That link has a workaround, but prefer to use false unless your needs dictate otherwise.
      * 
      * The lifecycle for KSP comes from Unity with a few differences:
      *    
@@ -64,7 +64,8 @@ namespace Tac
          */
         public SimplePartlessPlugin()
         {
-            Debug.Log("TAC Examples-SimplePartlessPlugin [" + this.GetInstanceID().ToString("X") + "][" + Time.time.ToString("0.0000") + "]: Constructor");
+            Debug.Log("TAC Examples-SimplePartlessPlugin [" + this.GetInstanceID().ToString("X")
+                + "][" + Time.time.ToString("0.0000") + "]: Constructor");
         }
 
         /*
@@ -72,7 +73,8 @@ namespace Tac
          */
         void Awake()
         {
-            Debug.Log("TAC Examples-SimplePartlessPlugin [" + this.GetInstanceID().ToString("X") + "][" + Time.time.ToString("0.0000") + "]: Awake: " + this.name);
+            Debug.Log("TAC Examples-SimplePartlessPlugin [" + this.GetInstanceID().ToString("X")
+                + "][" + Time.time.ToString("0.0000") + "]: Awake: " + this.name);
         }
 
         /*
@@ -80,7 +82,8 @@ namespace Tac
          */
         void Start()
         {
-            Debug.Log("TAC Examples-SimplePartlessPlugin [" + this.GetInstanceID().ToString("X") + "][" + Time.time.ToString("0.0000") + "]: Start");
+            Debug.Log("TAC Examples-SimplePartlessPlugin [" + this.GetInstanceID().ToString("X")
+                + "][" + Time.time.ToString("0.0000") + "]: Start");
         }
 
         /*
@@ -88,7 +91,8 @@ namespace Tac
          */
         void Update()
         {
-            Debug.Log("TAC Examples-SimplePartlessPlugin [" + this.GetInstanceID().ToString("X") + "][" + Time.time.ToString("0.0000") + "]: Update");
+            Debug.Log("TAC Examples-SimplePartlessPlugin [" + this.GetInstanceID().ToString("X")
+                + "][" + Time.time.ToString("0.0000") + "]: Update");
         }
 
         /*
@@ -96,7 +100,8 @@ namespace Tac
          */
         void FixedUpdate()
         {
-            Debug.Log("TAC Examples-SimplePartlessPlugin [" + this.GetInstanceID().ToString("X") + "][" + Time.time.ToString("0.0000") + "]: FixedUpdate");
+            Debug.Log("TAC Examples-SimplePartlessPlugin [" + this.GetInstanceID().ToString("X")
+                + "][" + Time.time.ToString("0.0000") + "]: FixedUpdate");
         }
 
         /*
@@ -104,7 +109,8 @@ namespace Tac
          */
         void OnDestroy()
         {
-            Debug.Log("TAC Examples-SimplePartlessPlugin [" + this.GetInstanceID().ToString("X") + "][" + Time.time.ToString("0.0000") + "]: OnDestroy");
+            Debug.Log("TAC Examples-SimplePartlessPlugin [" + this.GetInstanceID().ToString("X")
+                + "][" + Time.time.ToString("0.0000") + "]: OnDestroy");
         }
     }
 }

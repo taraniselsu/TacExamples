@@ -3,7 +3,8 @@ Some example projects to help learn modding of Kerbal Space Program.
 
 For use with the Kerbal Space Program, http://kerbalspaceprogram.com/
 
-Licensed under the Apache License Version 2.0.  See the LICENSE.txt and NOTICE.txt files.
+Licensed under the Apache License Version 2.0.  See the LICENSE.txt and
+NOTICE.txt files.
 
 Source code can be found at https://github.com/taraniselsu/TacExamples
 
@@ -28,6 +29,6 @@ Source code can be found at https://github.com/taraniselsu/TacExamples
 * 
 
 
-Note that Thunder Aerospace Corporation is a ficticious entity created for entertainment
-purposes. It is in no way meant to represent a real entity. Any similarity to a real entity
-is purely coincidental.
+Note that Thunder Aerospace Corporation is a ficticious entity created for
+entertainment purposes. It is in no way meant to represent a real entity.
+Any similarity to a real entity is purely coincidental.
