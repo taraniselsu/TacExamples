@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01-SimplePartlessPlugin", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02-SimplePartModule", "02-SimplePartModule\Source\02-SimplePartModule.csproj", "{F69E903B-BA09-42AD-87E9-E8D0BF1BF1A9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03-PartRightClick", "03-PartRightClicking\Source\03-PartRightClick.csproj", "{3A5CC47E-AD11-42F3-B1B2-9D0755F2E56D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{F69E903B-BA09-42AD-87E9-E8D0BF1BF1A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F69E903B-BA09-42AD-87E9-E8D0BF1BF1A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F69E903B-BA09-42AD-87E9-E8D0BF1BF1A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A5CC47E-AD11-42F3-B1B2-9D0755F2E56D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A5CC47E-AD11-42F3-B1B2-9D0755F2E56D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A5CC47E-AD11-42F3-B1B2-9D0755F2E56D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A5CC47E-AD11-42F3-B1B2-9D0755F2E56D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
