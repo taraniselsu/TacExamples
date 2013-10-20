@@ -53,10 +53,19 @@ namespace Tac
      * 
      * Also see http://www.richardfine.co.uk/2012/10/unity3d-monobehaviour-lifecycle/ for more
      * information about the Unity lifecycle.
+     * 
+     * This plugin does not actually do anything beyond logging to the Debug console, which you
+     * can access by pressing Alt+F2 or Alt+F12 (on Windows, for OSX use Opt and for Linux use
+     * Right Shift). You can also look at the debug file, which you can find at
+     * {KSP}/KSP_Data/output_log.txt.
      */
     [KSPAddon(KSPAddon.Startup.Flight, false)]
     public class SimplePartlessPlugin : MonoBehaviour
     {
+        private float lastUpdate = 0.0f;
+        private float lastFixedUpdate = 0.0f;
+        private float logInterval = 5.0f;
+
         /*
          * Caution: as it says here: http://docs.unity3d.com/Documentation/ScriptReference/MonoBehaviour.Awake.html,
          * use the Awake() method instead of the constructor for initializing data because Unity uses
@@ -91,8 +100,12 @@ namespace Tac
          */
         void Update()
         {
-            Debug.Log("TAC Examples-SimplePartlessPlugin [" + this.GetInstanceID().ToString("X")
-                + "][" + Time.time.ToString("0.0000") + "]: Update");
+            if ((Time.time - lastUpdate) > logInterval)
+            {
+                lastUpdate = Time.time;
+                Debug.Log("TAC Examples-SimplePartlessPlugin [" + this.GetInstanceID().ToString("X")
+                    + "][" + Time.time.ToString("0.0000") + "]: Update");
+            }
         }
 
         /*
@@ -100,8 +113,12 @@ namespace Tac
          */
         void FixedUpdate()
         {
-            Debug.Log("TAC Examples-SimplePartlessPlugin [" + this.GetInstanceID().ToString("X")
-                + "][" + Time.time.ToString("0.0000") + "]: FixedUpdate");
+            if ((Time.time - lastFixedUpdate) > logInterval)
+            {
+                lastFixedUpdate = Time.time;
+                Debug.Log("TAC Examples-SimplePartlessPlugin [" + this.GetInstanceID().ToString("X")
+                    + "][" + Time.time.ToString("0.0000") + "]: FixedUpdate");
+            }
         }
 
         /*

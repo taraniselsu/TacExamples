@@ -59,6 +59,11 @@ namespace Tac
      * 
      * Unity uses Serialization a lot, so use the Awake() method to initialize your fields rather
      * than the constructor.
+     * 
+     * This plugin does not actually do anything beyond logging to the Debug console, which you
+     * can access by pressing Alt+F2 or Alt+F12 (on Windows, for OSX use Opt and for Linux use
+     * Right Shift). You can also look at the debug file, which you can find at
+     * {KSP}/KSP_Data/output_log.txt.
      */
     public class SimplePartModule : PartModule
     {
@@ -84,7 +89,6 @@ namespace Tac
         {
             Debug.Log("TAC Examples-SimplePartModule [" + this.GetInstanceID().ToString("X")
                 + "][" + Time.time.ToString("0.0000") + "]: OnAwake: " + this.name);
-            base.OnAwake();
         }
 
         /*
@@ -96,7 +100,6 @@ namespace Tac
         {
             Debug.Log("TAC Examples-SimplePartModule [" + this.GetInstanceID().ToString("X")
                 + "][" + Time.time.ToString("0.0000") + "]: OnActive");
-            base.OnActive();
         }
 
         /*
@@ -106,7 +109,6 @@ namespace Tac
         {
             Debug.Log("TAC Examples-SimplePartModule [" + this.GetInstanceID().ToString("X")
                 + "][" + Time.time.ToString("0.0000") + "]: OnStart: " + state);
-            base.OnStart(state);
         }
 
         /*
@@ -114,14 +116,12 @@ namespace Tac
          */
         public override void OnUpdate()
         {
-            // This is here just to prevent spamming the log file.
             if ((Time.time - lastUpdate) > logInterval)
             {
                 lastUpdate = Time.time;
                 Debug.Log("TAC Examples-SimplePartModule [" + this.GetInstanceID().ToString("X")
                     + "][" + Time.time.ToString("0.0000") + "]: OnUpdate");
             }
-            base.OnUpdate();
         }
 
         /*
@@ -129,14 +129,12 @@ namespace Tac
          */
         public override void OnFixedUpdate()
         {
-            // This is here just to prevent spamming the log file.
             if ((Time.time - lastFixedUpdate) > logInterval)
             {
                 lastFixedUpdate = Time.time;
                 Debug.Log("TAC Examples-SimplePartModule [" + this.GetInstanceID().ToString("X")
                     + "][" + Time.time.ToString("0.0000") + "]: OnFixedUpdate");
             }
-            base.OnFixedUpdate();
         }
 
         /*
@@ -146,7 +144,7 @@ namespace Tac
         {
             Debug.Log("TAC Examples-SimplePartModule [" + this.GetInstanceID().ToString("X")
                 + "][" + Time.time.ToString("0.0000") + "]: GetInfo");
-            return base.GetInfo() + "\nContains the TAC Example - Simple Part Module\n";
+            return "\nContains the TAC Example - Simple Part Module\n";
         }
 
         /*
@@ -156,7 +154,6 @@ namespace Tac
         {
             Debug.Log("TAC Examples-SimplePartModule [" + this.GetInstanceID().ToString("X")
                 + "][" + Time.time.ToString("0.0000") + "]: OnInactive");
-            base.OnInactive();
         }
 
         /*
@@ -167,7 +164,6 @@ namespace Tac
         {
             Debug.Log("TAC Examples-SimplePartModule [" + this.GetInstanceID().ToString("X")
                 + "][" + Time.time.ToString("0.0000") + "]: OnLoad: " + node);
-            base.OnLoad(node);
         }
 
         /*
@@ -177,7 +173,6 @@ namespace Tac
         {
             Debug.Log("TAC Examples-SimplePartModule [" + this.GetInstanceID().ToString("X")
                 + "][" + Time.time.ToString("0.0000") + "]: OnSave: " + node);
-            base.OnSave(node);
         }
     }
 }
