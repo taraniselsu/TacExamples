@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03-PartRightClick", "03-Par
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04-ActionGroups", "04-ActionGroups\Source\04-ActionGroups.csproj", "{036D3FFE-E29A-48EA-A470-D46F77A29629}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05-KspFields", "05-KspFields\Source\05-KspFields.csproj", "{F27358BD-F7C2-42EF-8BA4-F2B80546175E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{036D3FFE-E29A-48EA-A470-D46F77A29629}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{036D3FFE-E29A-48EA-A470-D46F77A29629}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{036D3FFE-E29A-48EA-A470-D46F77A29629}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F27358BD-F7C2-42EF-8BA4-F2B80546175E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F27358BD-F7C2-42EF-8BA4-F2B80546175E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F27358BD-F7C2-42EF-8BA4-F2B80546175E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F27358BD-F7C2-42EF-8BA4-F2B80546175E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
