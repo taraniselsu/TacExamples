@@ -19,6 +19,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 
 namespace Tac
@@ -74,6 +76,9 @@ namespace Tac
         [KSPField(isPersistant = true)]
         public MyType myType;
 
+        [SerializeField]
+        private byte[] myTypeSerialized;
+
         public KspFieldsModule()
         {
             if (myType == null)
@@ -85,46 +90,68 @@ namespace Tac
 
         public override void OnAwake()
         {
+            LoadTypes();
             Debug.Log("TAC Examples-KspFields [" + this.GetInstanceID().ToString("X") + "][" + Time.time.ToString("0.0000") + "]: OnAwake: " + makeLogString());
         }
 
         public override void OnLoad(ConfigNode node)
         {
             Debug.Log("TAC Examples-KspFields [" + this.GetInstanceID().ToString("X") + "][" + Time.time.ToString("0.0000") + "]: OnLoad: " + makeLogString());
+            if (HighLogic.LoadedScene == GameScenes.LOADING)
+                SaveTypes();
         }
 
         private string makeLogString()
         {
             return "anInt=" + anInt + ", aLong=" + aLong + ", aFloat=" + aFloat + ", aDouble=" + aDouble + ", aBool=" + aBool + ", aString=" + aString + ", myType=" + myType;
         }
+
+        private void SaveTypes()
+        {
+            // Unity for some daft reason, and not as according to it's own documentation, won't clone 
+            // serializable member fields. Lets DIY.
+            // Note that any time some contents of the myType is changed in the VAB, you need to call this method
+            // otherwise the change will be reverted when a symetry copy is created.
+            MemoryStream stream = new MemoryStream();
+            using (stream)
+            {
+                BinaryFormatter fmt = new BinaryFormatter();
+                fmt.Serialize(stream, myType);
+                // You can extend this to save any other types
+            }
+            myTypeSerialized = stream.ToArray();
+        }
+
+        private void LoadTypes()
+        {
+            // Unity for some daft reason, and not as according to it's own documentation, won't clone 
+            // serializable member fields. Lets DIY.
+            if (myTypeSerialized == null)
+                return;
+
+            using (MemoryStream stream = new MemoryStream(myTypeSerialized))
+            {
+                BinaryFormatter fmt = new BinaryFormatter();
+                myType = (MyType)fmt.Deserialize(stream);
+            }
+        }
     }
 
     [Serializable]
     public class MyType : IConfigNode
     {
-        [SerializeField]
+        [Persistent]
         public float oneFloat = 123.45f;
-        [SerializeField]
+        [Persistent]
         public float twoFloat = 234.56f;
 
         public void Load(ConfigNode node)
         {
-            float f;
-            if (node.HasValue("oneFloat") && float.TryParse(node.GetValue("oneFloat"), out f))
-            {
-                oneFloat = f;
-            }
-
-            if (node.HasValue("twoFloat") && float.TryParse(node.GetValue("twoFloat"), out f))
-            {
-                twoFloat = f;
-            }
+            ConfigNode.LoadObjectFromConfig(this, node);
         }
-
         public void Save(ConfigNode node)
         {
-            node.AddValue("oneFloat", oneFloat);
-            node.AddValue("twoFloat", twoFloat);
+            ConfigNode.CreateConfigFromObject(this, node);
         }
 
         public override string ToString()
